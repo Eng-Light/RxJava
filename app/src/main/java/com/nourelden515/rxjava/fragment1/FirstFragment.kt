@@ -29,6 +29,7 @@ class FirstFragment : Fragment() {
         var counter = 0
         binding.buttonStart.setOnClickListener {
             activity.eventSubject.onNext((counter++).toString())
+            binding.textViewChars.text = (counter-1).toString()
         }
     }
 
