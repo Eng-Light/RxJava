@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.nourelden515.rxjava.MainActivity
+import com.nourelden515.rxjava.MessageEvent
 import com.nourelden515.rxjava.databinding.FragmentFirstBinding
-import io.reactivex.rxjava3.disposables.Disposable
+import org.greenrobot.eventbus.EventBus
 
 class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
-    private var disposable: Disposable? = null
-    private val activity by lazy { requireActivity() as MainActivity }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,15 +24,16 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var counter = 0
-        binding.buttonStart.setOnClickListener {
-            activity.eventSubject.onNext((counter++).toString())
-            binding.textViewChars.text = (counter-1).toString()
-        }
-    }
 
-    override fun onPause() {
-        super.onPause()
-        disposable?.dispose()
+        binding.buttonStart.setOnClickListener {
+
+            val event = MessageEvent((counter++).toString())
+            // Publish an event
+            EventBus.getDefault().post(event)
+
+            //activity.eventSubject.onNext((counter++).toString())
+            binding.textViewChars.text = (counter - 1).toString()
+        }
     }
 
 }
