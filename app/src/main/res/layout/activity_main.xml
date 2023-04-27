@@ -11,18 +11,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:name="com.nourelden515.rxjava.fragment1.FirstFragment"
-        app:layout_constraintBottom_toTopOf="@id/fragment_container2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:name="com.nourelden515.rxjava.fragment2.SecondFragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_container1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
